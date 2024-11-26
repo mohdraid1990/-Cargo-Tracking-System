@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Система отслеживания грузов - отслеживайте состояние ваших грузов и получайте актуальную информацию о маршрутах доставки.">
+    <meta name="keywords" content="грузы, отслеживание грузов, доставка, логистика">
+    <meta name="robots" content="index, follow">
+    <title>Грузовые перевозки - Система отслеживания грузов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="truck-icon">
+                        <path d="M10 17h4V5H2v12h3m15 0h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/>
+                        <circle cx="7.5" cy="17.5" r="2.5"/>
+                        <circle cx="17.5" cy="17.5" r="2.5"/>
+                    </svg>
+                    <h1>Система отслеживания грузов</h1>
+                </div>
+                <div class="filter">
+                    <label for="status-filter">Фильтр по статусу:</label>
+                    <select id="status-filter">
+                        <option value="all">Все статусы</option>
+                        <option value="awaiting">Ожидает отправки</option>
+                        <option value="in_transit">В пути</option>
+                        <option value="delivered">Доставлен</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="add-cargo-form">
+                <div class="form-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                    <h2>Добавить новый груз</h2>
+                </div>
+                <form id="cargo-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Название груза</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="origin">Пункт отправления</label>
+                            <select id="origin" name="origin" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Пункт назначения</label>
+                            <select id="destination" name="destination" required></select>
+                            <span class="error-message" id="destination-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="departure-date">Дата отправления</label>
+                            <input type="date" id="departure-date" name="departure-date" required>
+                            <span class="error-message" id="date-error"></span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Добавить груз</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="cargo-table">
+                <table id="cargo-list">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Название</th>
+                            <th>Статус</th>
+                            <th>Откуда</th>
+                            <th>Куда</th>
+                            <th>Дата отправления</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="empty-state" class="empty-state hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <h3>Нет данных</h3>
+                    <p id="empty-message">Начните с добавления нового груза</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
